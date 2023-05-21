@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300&family=Share+Tech+Mono&display=swap');@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active{
+    @apply text-[#0055FF];
+}
+.active-decoration{
+    @apply border-b-4 pb-5 border-[#0055FF] translate-y-4;
+}
