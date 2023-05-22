@@ -308,7 +308,7 @@ const MyAccount = () => {
               )}
 
               {/*  */}
-              <div className=" bg-[#212345] rounded-xl border-[0.8px] border-[#363970] w-[358px] sm:w-[528px] h-[441px] my-20 px-5">
+              <div className=" bg-[#212345] rounded-xl border-[0.8px] border-[#363970] w-[370px] sm:w-[528px] h-[441px] my-20 px-2 sm:px-5">
                 <div className="nav flex justify-between border-b-[0.8px] border-[#8182C5] h-10 mt-5 ">
                   <div className="links flex gap-5">
                     {isReversed ? (
