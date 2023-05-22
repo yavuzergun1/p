@@ -79,7 +79,8 @@ const TransActions = () => {
   }
 
   useEffect(() => {
-    if (account && contract) {
+    if (account && contract)
+    {
       main();
     }
   }, [account, contract]); // dependencies
@@ -99,8 +100,8 @@ const TransActions = () => {
             </p>{" "}
             {!loading ? (
               <>
-                <div className="rounded-2xl pb-16 bg-[#212345] w-[950px] sm:max-w-[1289px] text-[10px] md:text-sm font-[#C6C9F4] mt-14 ">
-                  <table className="w-[370px] sm:max-w-[1289px] overflow-x-scroll">
+                <div className="rounded-2xl pb-16 bg-[#212345] max-w-[1289px] text-[10px] md:text-sm font-[#C6C9F4] mt-14 overflow-x-scroll sm:overflow-x-hidden">
+                  <table className="w-[550px] sm:w-full">
                     <thead>
                       <tr className="border-b-[0.8px] border-b-[#363970] h-20">
                         <th className="text-center">Transactions</th>
