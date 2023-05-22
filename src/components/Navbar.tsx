@@ -15,9 +15,9 @@ const Navbar = () => {
   const { session, login, logout } = useContext(SessionContext);
 
   return (
-    <nav className="w-full h-28 bg-[#232345] flex justify-between items-center px-3 sm:px-7">
+    <nav className="w-full h-28 bg-[#232345] flex justify-between items-center px-3 lg:px-7">
       <h2 className="text-white">GetFoz</h2>
-      <div className="links w-5/12 hidden sm:flex justify-between">
+      <div className="links w-7/12 hidden md:flex justify-between">
         <NavLink
           to="/"
           className={({ isActive }) => (isActive ? "active " : "text-white")}
@@ -32,7 +32,7 @@ const Navbar = () => {
 
       {!session ? (
         <div
-          className="text-base text-center pt-2 text-white rounded-xl font-normal bg-[#0055FF] w-[148px] h-[40px] absolute right-16 sm:relative "
+          className="text-base text-center pt-2 text-white rounded-xl font-normal bg-[#0055FF] w-[148px] h-[40px] absolute right-16 md:right-6 md:relative "
           onClick={login}
         >
           {" "}
@@ -41,7 +41,7 @@ const Navbar = () => {
       ) : (
         <React.Fragment>
           <div
-            className="text-base text-center pt-2 text-white rounded-xl font-normal bg-[#0055FF] w-[148px] h-[40px] absolute right-16 sm:relative "
+            className="text-base text-center pt-2 text-white rounded-xl font-normal bg-[#0055FF] w-[148px] h-[40px] absolute right-16 md:right-6 md:relative "
             onClick={logout}
           >
             {" "}
@@ -50,7 +50,7 @@ const Navbar = () => {
         </React.Fragment>
       )}
 
-      <div className="hamburger-menu relative sm:hidden inline-block ">
+      <div className="hamburger-menu relative md:hidden inline-block ">
         <input
           type="checkbox"
           checked={isOpen}
