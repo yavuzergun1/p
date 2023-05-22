@@ -56,7 +56,7 @@ const MyTrade = () => {
 
   return (
     <>
-      {session ? (
+      {/* {session ? ( */}
         <>
           <div className="pt-10 pb-14 px-2 xl:px-6 2xl:px-16">
             <h1 className=" text-3xl font-medium ">My Trade</h1>
@@ -145,9 +145,9 @@ const MyTrade = () => {
             )}
           </div>
         </>
-      ) : (
-        <>Please Login</>
-      )}
+      {/* ) : ( */}
+        {/* <>Please Login</> */}
+      {/* )} */}
     </>
   );
 };

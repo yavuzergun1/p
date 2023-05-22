@@ -44,7 +44,7 @@ const ClosedEvents = () => {
 
   return (
     <>
-      {session ? (
+      {/* {session ? ( */}
         <>
           {" "}
           <div className="pt-10 pb-14 px-2 xl:px-6 2xl:px-16">
@@ -147,9 +147,9 @@ const ClosedEvents = () => {
             )}
           </div>
         </>
-      ) : (
-        <>Please Login</>
-      )}
+      {/* ) : ( */}
+        {/* <>Please Login</> */}
+      {/* )} */}
     </>
   );
 };

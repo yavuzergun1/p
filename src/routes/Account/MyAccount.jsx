@@ -226,7 +226,7 @@ const MyAccount = () => {
 
   return (
     <>
-      {session ? (
+      {/* {session ? ( */}
         <>
           <div className="bg-[#181931] text-white py-10 px-2 sm:px-28">
             <h1 className=" text-3xl font-medium ">My Account</h1>
@@ -355,9 +355,9 @@ const MyAccount = () => {
             </div>
           </div>
         </>
-      ) : (
-        <> Please Login</>
-      )}
+      {/* ) : ( */}
+        {/* <> Please Login</> */}
+      {/* )} */}
     </>
   );
 };

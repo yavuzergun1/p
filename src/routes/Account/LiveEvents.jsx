@@ -152,36 +152,36 @@ const LiveEvents = () => {
 
   return (
     <>
-      {session ? (
-        <>
-          <div className="pt-10 pb-14 px-2 xl:px-6 2xl:px-16">
-            <h1 className=" text-3xl font-medium ">Live Events</h1>
-            <p className="max-w-[561px] mt-5">
-              Step into our 'Live Events' section - the buzzing marketplace of
-              opinion trading. Here, the events are alive and the trades are
-              driven by your viewpoints. Embrace the excitement, share your
-              opinions, and potentially reap the rewards if you're correct. Join
-              in now and let your voice shape the outcome!
-            </p>
+      {/* {session ? ( */}
+      <>
+        <div className="pt-10 pb-14 px-2 xl:px-6 2xl:px-16">
+          <h1 className=" text-3xl font-medium ">Live Events</h1>
+          <p className="max-w-[561px] mt-5">
+            Step into our 'Live Events' section - the buzzing marketplace of
+            opinion trading. Here, the events are alive and the trades are
+            driven by your viewpoints. Embrace the excitement, share your
+            opinions, and potentially reap the rewards if you're correct. Join
+            in now and let your voice shape the outcome!
+          </p>
 
-            {!loading ? (
-              <>
-                <div className="cards flex flex-wrap justify-between">
-                  {liveEvents.map((event) => (
-                    <div key={event.event_id}>
-                      <div className="info-container mt-14 max-w-[450px] h-80 md:h-[392px] rounded-lg bg-[#212345] border-[.8px] border-[#363970] ">
-                        <div className="bitcoin px-2 md:px-5 items-center flex justify-between py-2 border-b-[1px] border-[#363970] xl:h-32 ">
-                          <div className="flex w-9/12 items-center gap-4">
-                            <FaBitcoin size={60} />
-                            <p className="text-sm  ml-1 ">
-                              {event.description}
-                            </p>
-                          </div>
-
-                          <p className="text-sm xl:text-lg">
-                            Event id: # {event.event_id}
-                          </p>
+          {!loading ? (
+            <>
+              <div className="cards flex flex-wrap justify-between">
+                {liveEvents.map((event) => (
+                  <div key={event.event_id}>
+                    <div className="info-container mt-14 max-w-[450px] h-[452px] rounded-lg bg-[#212345] border-[.8px] border-[#363970] ">
+                      <div className="bitcoin px-2 md:px-5 items-center flex justify-between py-2 border-b-[1px] border-[#363970] h-32 ">
+                        <div className="flex w-8/12 items-center gap-4">
+                          <FaBitcoin size={60} />
+                          <p className="text-sm  ml-1 ">{event.description}</p>
                         </div>
+
+                        <p className="text-sm xl:text-lg">
+                          Event id: # {event.event_id}
+                        </p>
+                      </div>
+
+                      <div className="px-2 mt-7 md:px-5 flex flex-col gap-5">
                         <div className="">
                           Track on:{" "}
                           <a
@@ -192,105 +192,93 @@ const LiveEvents = () => {
                             Link
                           </a>{" "}
                         </div>
+                        <div className="first flex text-base font-semibold mt-2 justify-between xl:text-xl ">
+                          <p className="">
+                            Opinion Pool:
+                            <p className="font-normal"> {event.total_amount}</p>
+                          </p>
+                          <p className="text-base xl:text-lg">
+                            <p>Expires in: </p>
+                            <p>{getCountdown(event.expiration)}</p>
+                          </p>
+                        </div>
 
-                        <div className="px-2 mt-7 md:px-5 flex flex-col gap-5">
-                          <div className="first flex text-xs font-semibold mt-2 justify-between xl:text-xl ">
-                            <p className="">
-                              Opinion Pool:
-                              <span className="font-normal">
-                                {" "}
-                                {event.total_amount}
-                              </span>
-                            </p>
-                            <p className="">
-                              <p>
-                                Expires in: {getCountdown(event.expiration)}
-                              </p>
-                            </p>
-                          </div>
+                        <div className="second mt-4 flex text-xs sm:text-base w-full justify-between items-center ">
+                          <p>{event.price}</p>
+                          <button
+                            className={`rounded-xl w-5/12 h-7 bg-[#FF0000] xl:h-10`}
+                            onClick={async () => {
+                              const newBid = {
+                                user: actorAsString,
+                                event_id: event.event_id,
+                                bet_on: true,
+                                amount: event.price,
+                              };
+                              try {
+                                await transact(newBid);
+                              } catch (e) {
+                                console.log("Transaction failed", e);
+                              }
+                            }}
+                          >
+                            Yes
+                          </button>
 
-                          <div className="second mt-4 flex text-sm w-full justify-center gap-8">
-                            <p>{event.price}</p>
-                            <button
-                              className={`rounded-xl w-6/12 h-7 bg-[#FF0000] xl:h-10`}
-                              onClick={async () => {
-                                const newBid = {
-                                  user: actorAsString,
-                                  event_id: event.event_id,
-                                  bet_on: true,
-                                  amount: event.price,
-                                };
-                                try {
-                                  await transact(newBid);
-                                } catch (e) {
-                                  console.log("Transaction failed", e);
-                                }
-                              }}
-                            >
-                              Yes
-                            </button>
+                          <p className="text-sm xl:text-base">
+                            {`${event.yes_bets}  traders`}
+                          </p>
+                        </div>
 
-                            <p className="text-sm xl:text-lg">
-                              {event.yes_bets}traders
-                            </p>
-                          </div>
+                        <div className="third flex text-xs sm:text-base w-full justify-between items-center gap-5">
+                          <p>{event.price}</p>
+                          <button
+                            className={`rounded-xl w-5/12 h-7 bg-[#0055FF] xl:h-10`}
+                            onClick={async () => {
+                              const newBid = {
+                                user: actorAsString,
+                                event_id: event.event_id,
+                                bet_on: false,
+                                amount: event.price,
+                              };
+                              try {
+                                await transact(newBid);
+                              } catch (e) {
+                                console.log("Transaction failed", e);
+                              }
+                            }}
+                          >
+                            No
+                          </button>
 
-                          <div className="third flex text-sm w-full justify-center gap-8">
-                            <p>{event.price}</p>
-                            <button
-                              className={`rounded-xl w-6/12 h-7 bg-[#0055FF] xl:h-10`}
-                              onClick={async () => {
-                                const newBid = {
-                                  user: actorAsString,
-                                  event_id: event.event_id,
-                                  bet_on: false,
-                                  amount: event.price,
-                                };
-                                try {
-                                  await transact(newBid);
-                                } catch (e) {
-                                  console.log("Transaction failed", e);
-                                }
-                              }}
-                            >
-                              No
-                            </button>
-
-                            <p className="text-sm xl:text-lg">
-                              {event.no_bets} traders
-                            </p>
-                          </div>
+                          <p className="text-sm xl:text-base">
+                            {`${event.no_bets} traders`}
+                          </p>
                         </div>
                       </div>
                     </div>
-                  ))}
-                </div>
-              </>
-            ) : (
-              <>
-                {" "}
-                <ColorRing
-                  visible={true}
-                  height="80"
-                  width="80"
-                  ariaLabel="blocks-loading"
-                  wrapperStyle={{}}
-                  wrapperClass="blocks-wrapper"
-                  colors={[
-                    "#e15b64",
-                    "#f47e60",
-                    "#f8b26a",
-                    "#abbd81",
-                    "#849b87",
-                  ]}
-                />
-              </>
-            )}
-          </div>
-        </>
-      ) : (
-        <> Please Login</>
-      )}
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <>
+              {" "}
+              <ColorRing
+                visible={true}
+                height="80"
+                width="80"
+                ariaLabel="blocks-loading"
+                wrapperStyle={{}}
+                wrapperClass="blocks-wrapper"
+                colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+              />
+            </>
+          )}
+        </div>
+      </>
+      {/* ) : ( */}
+      {/* <> Please Login</> */}
+      {/* )} */}
     </>
   );
 };
