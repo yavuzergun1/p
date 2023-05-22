@@ -56,7 +56,7 @@ const MyTrade = () => {
 
   return (
     <>
-      {/* {session ? ( */}
+      {session ? (
         <>
           <div className="pt-10 pb-14 px-2 xl:px-6 2xl:px-16">
             <h1 className=" text-3xl font-medium ">My Trade</h1>
@@ -71,7 +71,7 @@ const MyTrade = () => {
                   {bets.map((bets) => (
                     <div
                       key={bets.bet_id}
-                      className="info-container mt-14 max-w-[454px] h-80 md:h-[392px] rounded-lg bg-[#212345] border-[.8px] border-[#363970] "
+                      className="info-container mt-14 w-[454px] h-80 md:h-[392px] rounded-lg bg-[#212345] border-[.8px] border-[#363970] "
                     >
                       <div className="bitcoin px-2 md:px-5 items-center flex justify-between py-2 border-b-[1px] border-[#363970] xl:h-32 ">
                         <div className="flex w-9/12 items-center gap-4">
@@ -145,9 +145,9 @@ const MyTrade = () => {
             )}
           </div>
         </>
-      {/* ) : ( */}
-        {/* <>Please Login</> */}
-      {/* )} */}
+      ) : (
+        <>Please Login</>
+      )}
     </>
   );
 };
