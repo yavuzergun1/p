@@ -226,7 +226,7 @@ const MyAccount = () => {
 
   return (
     <>
-      {/* {session ? ( */}
+      {session ? (
         <>
           <div className="bg-[#181931] text-white py-10 px-2 sm:px-28">
             <h1 className=" text-3xl font-medium ">My Account</h1>
@@ -308,7 +308,7 @@ const MyAccount = () => {
               )}
 
               {/*  */}
-              <div className=" bg-[#212345] rounded-xl border-[0.8px] border-[#363970] max-w-[528px] sm:w-[528px] h-[441px] my-20 px-5">
+              <div className=" bg-[#212345] rounded-xl border-[0.8px] border-[#363970] w-[358px] sm:w-[528px] h-[441px] my-20 px-5">
                 <div className="nav flex justify-between border-b-[0.8px] border-[#8182C5] h-10 mt-5 ">
                   <div className="links flex gap-5">
                     {isReversed ? (
@@ -355,9 +355,9 @@ const MyAccount = () => {
             </div>
           </div>
         </>
-      {/* ) : ( */}
-        {/* <> Please Login</> */}
-      {/* )} */}
+      ) : (
+        <> Please Login</>
+      )}
     </>
   );
 };
